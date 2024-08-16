@@ -57,14 +57,14 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
 void reconnect() {
   while (!client.connected()) {
-    if (client.connect("mqttx_66b7c43347a")) {
+    if (client.connect("ESP32")) {
       Serial.println("connected");
       client.subscribe("serviço");
     } else {
       Serial.print("falha, rc=");
       Serial.print(client.state());
       Serial.println("nova tentativa em 3seg");
-      delay(30000);
+      delay(3000);
     }
   }
 }
