@@ -37,6 +37,7 @@ void setup() {
   client.setCallback(callback);
 }
 
+//Chamada para receber dados do broker
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Mensagem recebida no tópico: ");
   Serial.println(topic);
@@ -54,7 +55,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
 
 
-
+//callback de conexão com o broker
 void reconnect() {
   while (!client.connected()) {
     if (client.connect("ESP32")) {
@@ -69,8 +70,7 @@ void reconnect() {
   }
 }
 
-void loop() {
-  
+void loop() {  
   if (!client.connected())
   {
     reconnect();
